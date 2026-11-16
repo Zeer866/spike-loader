@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spike Loader · Mods para Geometry Dash en Android</title>
+<meta name="description" content="Spike Loader es un cargador de mods para Geometry Dash en Android, hecho por la comunidad.">
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #2a313c;
+    --text: #e6edf3;
+    --muted: #9aa7b4;
+    --teal: #2ec4b6;
+    --blue: #2f80d1;
+    --warn: #e3b341;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  a { color: var(--teal); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+
+  header.hero {
+    text-align: center;
+    padding: 64px 0 48px;
+    background: radial-gradient(ellipse at top, rgba(47,128,209,.25), transparent 65%);
+  }
+  .hero img { width: 140px; height: 140px; border-radius: 28px; box-shadow: 0 10px 40px rgba(46,196,182,.25); }
+  .hero h1 { font-size: clamp(2rem, 7vw, 3rem); margin: 20px 0 6px; }
+  .badge {
+    display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .08em;
+    padding: 3px 10px; border-radius: 999px; border: 1px solid var(--warn); color: var(--warn);
+    vertical-align: middle;
+  }
+  .hero p.lead { color: var(--muted); font-size: 1.1rem; max-width: 560px; margin: 8px auto 28px; }
+
+  .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 26px; border-radius: 12px; font-weight: 700;
+    text-decoration: none; font-size: 1rem;
+  }
+  .btn-main { background: linear-gradient(135deg, var(--teal), var(--blue)); color: #05131a; }
+  .btn-alt { border: 1px solid var(--border); color: var(--text); background: var(--card); }
+  .btn:active { transform: scale(.98); }
+
+  section { padding: 36px 0; }
+  h2 { font-size: 1.5rem; margin: 0 0 18px; }
+
+  .steps { display: grid; gap: 14px; counter-reset: s; }
+  .step {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px 18px 16px 64px; position: relative;
+  }
+  .step::before {
+    counter-increment: s; content: counter(s);
+    position: absolute; left: 16px; top: 14px; width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--blue)); color: #05131a;
+    display: flex; align-items: center; justify-content: center; font-weight: 800;
+  }
+  .step b { display: block; margin-bottom: 2px; }
+  .step span { color: var(--muted); font-size: .95rem; }
+
+  code {
+    background: #0a0e14; border: 1px solid var(--border); border-radius: 6px;
+    padding: 2px 6px; font-size: .85rem; word-break: break-all;
+  }
+
+  .notice {
+    border: 1px solid var(--warn); background: rgba(227,179,65,.08);
+    border-radius: 14px; padding: 16px 18px;
+  }
+  .notice ul { margin: 8px 0 0; padding-left: 20px; }
+  .notice li { margin: 4px 0; }
+
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  footer { border-top: 1px solid var(--border); margin-top: 24px; padding: 28px 0 40px; color: var(--muted); font-size: .85rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img src="logo.png" alt="Logo de Spike Loader">
+    <h1>Spike Loader <span class="badge">ALFA</span></h1>
+    <p class="lead">Un cargador de mods para Geometry Dash en Android, hecho por la comunidad. Pon tus mods en una carpeta y se cargan solos al abrir el juego.</p>
+    <div class="buttons">
+      <a class="btn btn-main" href="https://www.mediafire.com/file/q8mnryjt4ivn7rh/Spike+Loader.apk/file" target="_blank" rel="noopener">⬇ Descargar APK</a>
+      <a class="btn btn-alt" href="https://github.com/Zeer866/spike-loader" target="_blank" rel="noopener">Ver en GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <h2>¿Cómo funciona?</h2>
+    <div class="steps">
+      <div class="step"><b>Agrega Spike Loader a tu Geometry Dash</b><span>Se parchea tu propia copia del juego para que cargue la librería del loader al iniciar.</span></div>
+      <div class="step"><b>Se crea la carpeta de mods</b><span>Al abrir el juego parcheado aparece <code>Android/media/com.robtopx.geometryjump/spikeloader/mods/</code></span></div>
+      <div class="step"><b>Pon tus mods ahí</b><span>Copia los archivos <code>.so</code> con tu gestor de archivos.</span></div>
+      <div class="step"><b>Abre el juego</b><span>Los mods se cargan automáticamente. Si cambias algo, reinicia Geometry Dash.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="notice">
+      <b>⚠ Antes de empezar</b>
+      <ul>
+        <li>Estamos en <b>alfa</b>: puede haber errores y el parcheo todavía es manual.</li>
+        <li>Los mods son <b>solo para Spike Loader</b>. Los mods de Geode (<code>.geode</code>) no funcionan aquí.</li>
+        <li>Necesitas tu <b>propia copia</b> de Geometry Dash. No distribuimos el juego.</li>
+        <li>Usa solo mods de fuentes en las que confíes: un mod es código que se ejecuta dentro del juego.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>¿Qué incluye?</h2>
+    <div class="grid">
+      <div class="card"><h3>Carga automática</h3><p>El loader arranca solo con el juego y busca los mods de la carpeta.</p></div>
+      <div class="card"><h3>Mods en C++</h3><p>Cada mod es una librería <code>.so</code> con una función de inicio.</p></div>
+      <div class="card"><h3>Código abierto</h3><p>Todo el proyecto está en GitHub y compila con GitHub Actions.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Próximamente</h2>
+    <div class="grid">
+      <div class="card"><h3>Hooks</h3><p>Para que los mods puedan interceptar funciones del juego.</p></div>
+      <div class="card"><h3>Parcheo automático</h3><p>Que el propio launcher prepare tu APK sin editar nada a mano.</p></div>
+      <div class="card"><h3>API para modders</h3><p>Cabeceras y ejemplos para crear mods con facilidad.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Spike Loader es un proyecto de la comunidad y no está afiliado a RobTop Games ni a Geode.<br>
+    Geometry Dash es propiedad de RobTop Games.</p>
+    <p><a href="https://github.com/Zeer866/spike-loader" target="_blank" rel="noopener">GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+  </html>
